@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+//import { Backdrop, CircularProgress } from '@mui/material';
+import HomePageContainer from './Site/HomePage/HomePageContainer';
+import AppBarContainer from './Site/AppBar/AppBarContainer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  
+ // const backdrop = useSelector(state => state.auth.backdrop)   
+  const user_ = JSON.parse(localStorage.getItem("finupkzuser"))
+  console.log(user_);
+
+
+  return (<>
+
+    <AppBarContainer />
+
+    <main>
+      <Routes>        
+        <Route path="/" element={<HomePageContainer />} />
+               
+      </Routes>
+    </main>
+    {/* <Backdrop
+      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      open={backdrop}
+    >
+      <CircularProgress color="primary" />
+    </Backdrop>     */}
+  </>
   );
 }
 
