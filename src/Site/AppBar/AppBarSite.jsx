@@ -11,11 +11,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 // import logo from '../Img/finup_logo_.png';
 // import logo1 from '../Img/logo.png';
-import logo2 from '../../Img/logo512.png';
+import logo2 from '../../Img/NEW_LOGO_05_2024.png';
 import { Button, Divider, MenuList, Stack } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
 
@@ -45,15 +42,15 @@ function AppBarSite() {
     //     window.location.reload()
     // };
 
-    const [settings, setSettings] = useState([
-        { title: 'Пользователь', onClick: () => { } },
-        { title: 'Компания', onClick: () => { } },
-        { title: 'Справочники', onClick: () => { } },
-        { title: 'Налоги-зарплата ИП', onClick: () => { } },
-        { title: 'Налоговые формы', onClick: () => { } },
+    const settings= [
+        { title: 'Главная', onClick: () => { } },
+        { title: 'Услуги', onClick: () => { } },
+        { title: 'Online Бухгалтер', onClick: () => { } },
+        { title: 'Цены', onClick: () => { } },
+        { title: 'Контакты', onClick: () => { } },
         // { title: 'Платежи', onClick: handleOpenFormPayments }, 
         { title: 'Выход', onClick: () => { } }
-    ])
+    ]
 
 
     return (
@@ -64,32 +61,15 @@ function AppBarSite() {
                     {/* <Avatar src={logo1} sx={{ width: 56, height: 56 }} variant="rounded"/> */}
                     <a href='/' style={{ textDecoration: 'none' }} >
                         <Stack direction="row" alignItems="center" spacing={1}>
-                            <Avatar src={logo2} sx={{ width: 56, height: 56 }} variant="rounded" />
-
-                            <Typography
-                                variant="h6"
-                                noWrap
-                                color='secondary'
-                                sx={{
-                                    ml: 1,
-
-                                    fontWeight: 700,
-                                    letterSpacing: '.1rem',
-                                    textDecoration: 'none',
-                                    lineHeight: '1.3',
-                                    fontSize: '2rem',
-                                }}
-                            >
-                                FinUP.kz
-                            </Typography>
+                            <img src={logo2} width={'192px'} alt='Аутсорсинг Бухгалтерии FinUp.kz' />
                         </Stack>
                     </a>
                     <Box sx={{ ml: 10, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                color='secondary'
-                                sx={{ display: 'block' }}
+                                
+                                sx={{ display: 'block', color: '#5d5d5d' }}
                             >
                                 {page}
                             </Button>

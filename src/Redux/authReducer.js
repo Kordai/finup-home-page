@@ -29,7 +29,7 @@ let initialState = {
     userId: 0,
     userKey: "",
     authUser: {
-        id: 0,
+        id: 1,
         phone: "",
     },
     backdrop: false,
