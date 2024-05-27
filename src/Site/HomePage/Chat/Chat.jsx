@@ -9,31 +9,29 @@ import dayjs from 'dayjs';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const Chat = ({addUserChatRequest}) => {
+const Chat = ({addUserChatRequest, newMessage, getAllMessages}) => {
 
     // const chats = useSelector(state => state.chat.chats_id)
     // const chat_users = useSelector(state => state.chat.chat_users)
-    const chat_messeges = [
-        { chat_id: 1, content: { content: "Здравствуйте! Я Бизнес консультант, могу ответить вам на вопросы касательно работы Бизнеса в Республике Казахстан.", date: "16.04.2024", time: "15:19", type: 0 }, date_create: "16.04.2024", id: 51, user_id: 21 },
-        { chat_id: 1, content: { content: "Здравствуйте!", date: "16.04.2024", time: "15:20", type: 0 }, date_create: "18.04.2024", id: 50, user_id: 1 },
-        { chat_id: 1, content: { content: "увву", date: "16.04.2024", time: "15:21", type: 0 }, date_create: "16.04.2024", id: 52, user_id: 21 },
-        { chat_id: 1, content: { content: "dddd", date: "16.04.2024", time: "15:37", type: 0 }, date_create: "16.04.2024", id: 53, user_id: 21 },
-        { chat_id: 1, content: { content: "Дата в Чате готова?", date: "17.04.2024", time: "9:39", type: 0 }, date_create: "17.04.2024", id: 55, user_id: 21 },
-        { chat_id: 1, content: { content: "Дату добавил.", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 56, user_id: 1 },
-        { chat_id: 1, content: { content: "Что ещё?", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 57, user_id: 1 },
-        { chat_id: 1, content: { content: "Что-то делать", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 58, user_id: 1 },
-        { chat_id: 1, content: { content: "Нужно добавить статус сообщения.", date: "18.04.2024", time: "10:11", type: 0 }, date_create: "18.04.2024", id: 59, user_id: 21 },
-        { chat_id: 1, content: { content: "Что-то делать", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 58, user_id: 1 },
-        { chat_id: 1, content: { content: "Нужно добавить статус сообщения.", date: "18.04.2024", time: "10:11", type: 0 }, date_create: "18.04.2024", id: 59, user_id: 21 }
-    ]
+    // const chat_messeges = [
+    //     { chat_id: 1, content: { content: "Здравствуйте! Я Бизнес консультант, могу ответить вам на вопросы касательно работы Бизнеса в Республике Казахстан.", date: "16.04.2024", time: "15:19", type: 0 }, date_create: "16.04.2024", id: 51, user_id: 21 },
+    //     { chat_id: 1, content: { content: "Здравствуйте!", date: "16.04.2024", time: "15:20", type: 0 }, date_create: "18.04.2024", id: 50, user_id: 1 },
+    //     { chat_id: 1, content: { content: "увву", date: "16.04.2024", time: "15:21", type: 0 }, date_create: "16.04.2024", id: 52, user_id: 21 },
+    //     { chat_id: 1, content: { content: "dddd", date: "16.04.2024", time: "15:37", type: 0 }, date_create: "16.04.2024", id: 53, user_id: 21 },
+    //     { chat_id: 1, content: { content: "Дата в Чате готова?", date: "17.04.2024", time: "9:39", type: 0 }, date_create: "17.04.2024", id: 55, user_id: 21 },
+    //     { chat_id: 1, content: { content: "Дату добавил.", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 56, user_id: 1 },
+    //     { chat_id: 1, content: { content: "Что ещё?", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 57, user_id: 1 },
+    //     { chat_id: 1, content: { content: "Что-то делать", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 58, user_id: 1 },
+    //     { chat_id: 1, content: { content: "Нужно добавить статус сообщения.", date: "18.04.2024", time: "10:11", type: 0 }, date_create: "18.04.2024", id: 59, user_id: 21 },
+    //     { chat_id: 1, content: { content: "Что-то делать", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 58, user_id: 1 },
+    //     { chat_id: 1, content: { content: "Нужно добавить статус сообщения.", date: "18.04.2024", time: "10:11", type: 0 }, date_create: "18.04.2024", id: 59, user_id: 21 }
+    // ]
     //useSelector(state => state.chat.chat_messeges)
     const authUser = useSelector(state => state.auth.authUser)
+    const chat_messeges = useSelector(state => state.chat.chat_messeges)
     const focusRef = React.useRef(null);
     const nowDate = dayjs(new Date())
     const [amountMessage, setAmountMessage] = useState(0)
-    const [newMes, setNewMes] = useState({})
-
-    console.log(authUser);
 
     const requestNewUser = () => {
         addUserChatRequest()
@@ -73,11 +71,20 @@ const Chat = ({addUserChatRequest}) => {
     const setNewMassage = (mes) => {
         if (authUser.id === 0) {
             requestNewUser()
+            setTimeout(()=>{}, 2000)
         }
         const time = (nowDate.$H > 9 ? nowDate.$H : '0' + nowDate.$H) + ':' + (nowDate.$m > 9 ? nowDate.$m : '0' + nowDate.$m)
         const date = nowDate.$D + '.' + (nowDate.$M + 1 > 9 ? nowDate.$M + 1 : '0' + (nowDate.$M + 1)) + '.' + nowDate.$y
-        //setNewMes({ chat_id: chats[0].chat_id, user_id: authUser.id, content: { type: 0, content: mes, time, date } }, authUser.id)
+        newMessage({ chat_id: authUser.chat_id, user_id: authUser.id, content: { type: 0, content: mes, time, date } })
     }
+
+    useEffect(()=>{
+        if (authUser.id !== 0) {
+            getAllMessages({chat_id : authUser.chat_id})
+        }
+    }, [authUser, getAllMessages])
+
+    
 
     useEffect(() => {
 

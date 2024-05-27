@@ -59,7 +59,7 @@ const setBackdrop = (data) => {
 
 export const newMessage = (obj) => {
     return async (dispatch) => {
-        const data = await ConnectToServer.setMessage(obj)
+        const data = await ConnectToServer.setMessage(obj)        
         if (data.success === 1) {
             dispatch(setMessege(obj))
         } else {
@@ -72,6 +72,7 @@ export const newMessage = (obj) => {
 export const getAllMessages = (idChat) => {
     return async (dispatch) => {
         const data = await ConnectToServer.getMessages(idChat)
+        console.log(data);
         if (data.success === 1) {
             dispatch(setMesseges(data.messeges))
         } else {

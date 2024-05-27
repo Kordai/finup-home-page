@@ -13,7 +13,7 @@
         $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
         $con->set_charset('utf8');
 
-        $result = $con->query("INSERT INTO messagesChat(chat_id, user_id, content, date_create) 
+        $result = $con->query("INSERT INTO messagesChat(chat_id, user_id, content, date) 
                     VALUES('$chat_id', '$user_id', '$content', '$date')"); 
 
         if ($result) {
