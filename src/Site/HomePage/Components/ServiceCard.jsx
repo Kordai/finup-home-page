@@ -4,7 +4,7 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea,  Grid } from '@mui/material';
+import { CardActionArea, Grid } from '@mui/material';
 import AddchartRoundedIcon from '@mui/icons-material/AddchartRounded';
 import AssignmentRoundedIcon from '@mui/icons-material/AssignmentRounded';
 import AodRoundedIcon from '@mui/icons-material/AodRounded';
@@ -52,7 +52,7 @@ const ServiceCard = ({ logo, title, subheader, text1, text2, btnName, fun }) => 
 
     return (
         <Grid item xs={6} md={6} sm={6} lg={4} xl={3} >
-            <Card sx={{ width: { xs: 165, sm: 350 }, height: { xs: 165, sm: 200 }, boxShadow: 'gray 0px 8px 10px -3px;', border: 4, borderColor: getAccountColor(logo), borderRadius: 3 }}>
+            <Card sx={{ width: { xs: 165, sm: 350 }, height: { xs: 165, sm: 190 }, boxShadow: 'gray 0px 8px 10px -3px;', border: 4, borderColor: getAccountColor(logo), borderRadius: 3 }}>
                 <CardActionArea onClick={fun} >
                     <CardHeader
                         sx={{ p: { xs: 1, md: 2 } }}
@@ -76,9 +76,11 @@ const ServiceCard = ({ logo, title, subheader, text1, text2, btnName, fun }) => 
                         <Typography variant="body2" color="text.secondary" textAlign={'left'} sx={{ fontSize: { xs: '0.7rem', sm: '0.8rem' }, display: { xs: 'block', sm: 'none' } }} >
                             {subheader + ' ' + text2}
                         </Typography>
-                        <Button color='secondary' size="small" sx={{ fontSize: { xs: '0.7rem', sm: 'default' }, mt: { xs: 3, sm: 2 } }}>
+
+                        <Typography color="text.secondary" sx={{color: '#07139e', mt: 2, fontSize: { xs: '14px', sm: '18px' }}} variant="h5" textAlign='center' >
                             {btnName}
-                        </Button>
+                        </Typography>
+
                     </CardContent>
                 </CardActionArea>
             </Card>

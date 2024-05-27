@@ -1,20 +1,18 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
-import Divider from '@mui/material/Divider';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import { Box } from '@mui/material';
 
-const BottomBar = () => {
+const BottomBar = ({newMessage}) => {
 
   const focusRef = React.useRef(null);
 
   const sendBtn = () => {
     const inp = focusRef.current
-    //newMessage(inp.value)
+    newMessage(inp.value)
     focusRef.current.focus()
     inp.value = ''
     window.scroll(0, window.screen.height);

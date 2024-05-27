@@ -4,13 +4,36 @@ import { Route, Routes } from 'react-router-dom';
 //import { Backdrop, CircularProgress } from '@mui/material';
 import HomePageContainer from './Site/HomePage/HomePageContainer';
 import AppBarContainer from './Site/AppBar/AppBarContainer';
+import { useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
-  
- // const backdrop = useSelector(state => state.auth.backdrop)   
-  const user_ = JSON.parse(localStorage.getItem("finupkzuser"))
-  console.log(user_);
+ 
+  const authUser = useSelector(state => state.auth.authUser)
+  console.log(authUser);
+  const userID = useSelector(state => state.auth.authUser.id)
+  const dispatch = useDispatch()
 
+ // const backdrop = useSelector(state => state.auth.backdrop)   
+  const user_1 = JSON.parse(localStorage.getItem("finupkzuserchat"))
+
+  console.log(user_1);
+
+  const setUser = useCallback((data) => {
+    dispatch({ type: 'AUTH/SET_USER', user: data })
+  }, [dispatch])
+
+  useEffect(() => {
+    const getStorageUser = () => {
+      const user_ = JSON.parse(localStorage.getItem("finupkzuserchat"))
+      if (user_ !== null) {
+        setUser(user_)
+      } 
+    }
+    if (userID === 0) {
+      getStorageUser()
+    }
+  }, [userID, setUser])
 
   return (<>
 

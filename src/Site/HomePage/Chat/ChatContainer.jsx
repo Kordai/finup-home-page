@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Chat from './Chat';
+import { addUserChatRequest } from '../../../Redux/authReducer';
 //import { newMessage, setStatusMessageRequest, uploadFileRequest } from '../../../Redux/chatReducer';
 
 class ChatContainer extends React.PureComponent {
@@ -10,7 +11,8 @@ class ChatContainer extends React.PureComponent {
         return (<Chat  
                     // newMessage={this.props.newMessage}   
                     // setStatusMessageRequest={this.props.setStatusMessageRequest}     
-                    // uploadFileRequest={this.props.uploadFileRequest}                 
+                    // uploadFileRequest={this.props.uploadFileRequest}      
+                    addUserChatRequest={this.props.addUserChatRequest}           
                 />)
     }
 }
@@ -24,4 +26,5 @@ export default connect(mapStateToProps, {
     // newMessage,
     // setStatusMessageRequest,
     // uploadFileRequest
+    addUserChatRequest
 })(ChatContainer)

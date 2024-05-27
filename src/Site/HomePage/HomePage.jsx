@@ -1,7 +1,6 @@
 import React from 'react';
 import ServiceCard from './Components/ServiceCard';
-import { Box, Container, Grid } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Container, Grid } from '@mui/material';
 import img1 from '../../Img/img1.jpg';
 import img2 from '../../Img/img2.jpg';
 import ChatContainer from './Chat/ChatContainer';
@@ -16,8 +15,6 @@ const btn = [
 
 const HomePage = () => {
 
-    const navigate = useNavigate();
-
     const goCabinet = () => {
         //navigate("https://cabinet.finup.kz/")
         //window.location.href = "https://cabinet.finup.kz/"
@@ -27,8 +24,7 @@ const HomePage = () => {
     const arrayFun = [goCabinet, () => { }, () => { }, () => { }]
 
     const screenHeight = (window.screen.height/2) - 50
-    console.log(screenHeight);
-
+   
     return <Container maxWidth="xl" sx={{ mt: { xs: 8, md: 12 } }}>
         <Grid container spacing={{ xs: 1, md: 2 }} >
             {btn.map((b, index) =>

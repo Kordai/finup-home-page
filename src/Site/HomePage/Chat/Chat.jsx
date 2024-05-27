@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Chip, Grid, Paper } from '@mui/material';
+import { Box, Chip, Grid, Paper, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import BottomBar from './Components/BottomBar';
 import IncomingMessage from './Components/IncomingMessage';
@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const BuhChat = () => {
+const Chat = ({addUserChatRequest}) => {
 
     // const chats = useSelector(state => state.chat.chats_id)
     // const chat_users = useSelector(state => state.chat.chat_users)
@@ -27,52 +27,33 @@ const BuhChat = () => {
         { chat_id: 1, content: { content: "Нужно добавить статус сообщения.", date: "18.04.2024", time: "10:11", type: 0 }, date_create: "18.04.2024", id: 59, user_id: 21 }
     ]
     //useSelector(state => state.chat.chat_messeges)
-    const status_messeges = useSelector(state => state.chat.status_chat_messeges)
     const authUser = useSelector(state => state.auth.authUser)
     const focusRef = React.useRef(null);
     const nowDate = dayjs(new Date())
     const [amountMessage, setAmountMessage] = useState(0)
+    const [newMes, setNewMes] = useState({})
 
     console.log(authUser);
+
+    const requestNewUser = () => {
+        addUserChatRequest()
+    }
 
     const getName = (uid) => {
         // const u = chat_users.filter((u) => u.user_id === uid)[0]
         // return u.lastName + ' ' + u.firstName
-        return "Atlz Gegrby"
+        return "FinUP.kz"
     }
-
-    const getStatus = (id) => {
-        let status = 0
-        let statusArray = []
-
-        if (status_messeges.length !== 0) {
-            statusArray = status_messeges.filter((s) => s.message_id === id)
-        }
-
-        if (statusArray.length !== 0) {
-            status = statusArray[0].status
-        }
-
-        return status
-    }
-
+    
     const getComponent = (content) => {
         if (content.type === 0) {
             return <TextMessage message={content.content} />
         }
-
         return <></>
     }
-
-    //Отправка статуса о прочтении
-    const setStatus = (id) => {
-        const time = (nowDate.$H > 9 ? nowDate.$H : '0' + nowDate.$H) + ':' + (nowDate.$m > 9 ? nowDate.$m : '0' + nowDate.$m)
-        const date = nowDate.$D + '.' + (nowDate.$M + 1 > 9 ? nowDate.$M + 1 : '0' + (nowDate.$M + 1)) + '.' + nowDate.$y
-        //setStatusMessageRequest({ message_id: id, user_id: authUser.id, status: 1, time_create: time, date_create: date });
-    }
-
+  
     //создаем массив из сообщений
-    const chat = chat_messeges.map((c) => ({ name: getName(c.user_id), status: getStatus(c.id), component: getComponent(c.content), ...c }))
+    const chat = chat_messeges.map((c) => ({ name: getName(c.user_id), component: getComponent(c.content), ...c }))
 
     //сортируем и получаем массив дат из существующих сообщений
     const dateMessage = [...new Set(chat.map((c) => c.content.date))]
@@ -86,13 +67,16 @@ const BuhChat = () => {
     const componentChat = componentChatDate.map((cd, indexD) => ({
         date: cd.date, message: cd.message.map((c, index) => c.user_id === authUser.id ?
             <SentMessage key={index} message={c} refus={indexD + 1 === componentChatDate.length && index + 1 === cd.message.length ? focusRef : null} /> :
-            <IncomingMessage key={index} setStatus={setStatus} message={c} refus={indexD + 1 === componentChatDate.length && index + 1 === cd.message.length ? focusRef : null} />)
+            <IncomingMessage key={index} message={c} refus={indexD + 1 === componentChatDate.length && index + 1 === cd.message.length ? focusRef : null} />)
     }))
 
     const setNewMassage = (mes) => {
+        if (authUser.id === 0) {
+            requestNewUser()
+        }
         const time = (nowDate.$H > 9 ? nowDate.$H : '0' + nowDate.$H) + ':' + (nowDate.$m > 9 ? nowDate.$m : '0' + nowDate.$m)
         const date = nowDate.$D + '.' + (nowDate.$M + 1 > 9 ? nowDate.$M + 1 : '0' + (nowDate.$M + 1)) + '.' + nowDate.$y
-        //newMessage({ chat_id: chats[0].chat_id, user_id: authUser.id, content: { type: 0, content: mes, time, date } }, authUser.mycompany)
+        //setNewMes({ chat_id: chats[0].chat_id, user_id: authUser.id, content: { type: 0, content: mes, time, date } }, authUser.id)
     }
 
     useEffect(() => {
@@ -113,14 +97,12 @@ const BuhChat = () => {
         display: 'flex',
         flexDirection: 'column',
         border: 3,
-        borderColor: '#07139e85',
+        borderColor: '#7d83cc',
         borderRadius: 5,
         height: '100%',
         width: '100%',
         position: 'sticky',
-        p: 1,
-        pb: 0,
-        pl: 0
+
     }} >
 
         <Grid
@@ -135,12 +117,29 @@ const BuhChat = () => {
                     overflowY: 'auto',
                     display: 'flex',
                     flexDirection: 'column',
-                    height: '89%',
+                    position: 'absolute',
+                    width: '100%',
+                    bgcolor: '#7d83cc',
+
+
+                }} >
+                    <Typography color="text.secondary" variant="body2" textAlign='center' sx={{color: 'white', fontSize: { xs: 'default', sm: 16 }}} >
+                    ИИ FinUP.kz - Бизнес консультант
+                    </Typography>
+                </Box >
+            </Grid>
+            <Grid item >
+                <Box sx={{
+                    boxSizing: 'border-box',
+                    overflowY: 'auto',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: { xs: '89%', sm: '87%' },
                     width: '98%',
                     position: 'absolute',
-                    
+                    top: { xs: 20, sm: 23 }
                 }} >
-                    <Box sx={{ px: 1, textAlign: 'center', pb:{ xs: 3, sm: 0 } }}>
+                    <Box sx={{ px: 1, textAlign: 'center', pb: { xs: 3, sm: 0 } }}>
                         {componentChat.map((c) => [c.date, ...c.message])}
                     </Box >
                 </Box >
@@ -154,4 +153,4 @@ const BuhChat = () => {
     </Box >
 }
 
-export default BuhChat
+export default Chat

@@ -1,15 +1,9 @@
 import React from 'react';
 import { Card, Box, Typography, Grid } from '@mui/material';
 import SmartToyRoundedIcon from '@mui/icons-material/SmartToyRounded';
-import { useEffect } from 'react';
 
-const IncomingMessage = ({ message, refus, setStatus }) => {
-    useEffect(()=>{
-        if (message.status === 0) {
-            setTimeout(setStatus(message.id), 3000)
-        }
-    }, [])
-    
+const IncomingMessage = ({ message, refus }) => {
+        
     return (
         <Box ref={refus} sx={{ width: '100%' }}>
             <Grid 
