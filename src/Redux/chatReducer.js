@@ -57,11 +57,11 @@ const setBackdrop = (data) => {
 
 //Thunk functions
 
-export const newMessage = (obj) => {
+export const newMessage = (obj, idChat) => {
     return async (dispatch) => {
         const data = await ConnectToServer.setMessage(obj)        
         if (data.success === 1) {
-            dispatch(setMessege(obj))
+            dispatch(getAllMessages(idChat))
         } else {
             console.log(data.message)
             //dispatch(toggleIsFetching(false))
@@ -72,8 +72,7 @@ export const newMessage = (obj) => {
 export const getAllMessages = (idChat) => {
     return async (dispatch) => {
         const data = await ConnectToServer.getMessages(idChat)
-        console.log(data);
-        if (data.success === 1) {
+        if (data.success === 1) {            
             dispatch(setMesseges(data.messeges))
         } else {
             console.log(data.message)

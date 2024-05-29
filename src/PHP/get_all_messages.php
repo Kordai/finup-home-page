@@ -19,7 +19,8 @@
 				$row["id"] = intval($row["id"]);
 				$row["chat_id"] = intval($row["chat_id"]);
 				$row["user_id"] = intval($row["user_id"]);
-				$row["content"] = json_decode($row["content"]);
+				$row["type"] = intval($row["type"]);
+							
 				array_push($response["messeges"], $row);
 		}
 

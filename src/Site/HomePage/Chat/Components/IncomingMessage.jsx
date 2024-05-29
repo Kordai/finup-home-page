@@ -18,12 +18,12 @@ const IncomingMessage = ({ message, refus }) => {
                 </Grid>
                 <Grid item>
                     <Card variant="elevation" sx={{ mr: 10, border: 1, p: 1, borderRadius: 4, borderTopLeftRadius: 0, backgroundColor: '#ffe57f45', borderColor: '#ffe57f' }} >
-                        <Box textAlign='left'>
+                        <Box textAlign='left'>                         
                             {message.component}
                         </Box>
                     </Card>
                     <Typography color="text.secondary" variant="body2" fontSize="11px" textAlign="left" >
-                        {message.content.time}
+                        {message.time}
                     </Typography>
                 </Grid>
             </Grid>

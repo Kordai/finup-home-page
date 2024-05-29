@@ -23,7 +23,7 @@ const SentMessage = ({ message, refus }) => {
                         </Box> */}
                     </Card>
                     <Typography color="text.secondary" variant="body2" fontSize="11px" textAlign="right" >
-                        {message.content.time}
+                        {message.time}
                     </Typography>
                 </Grid>
             </Grid>
