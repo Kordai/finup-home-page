@@ -1,7 +1,6 @@
-import axios from 'axios';
 import OpenAI from "openai";
-//sk-proj-3voBvNzW0gYQgh1O6saPT3BlbkFJgHYdTBl2DuKViBCAXnzK
-const OPENAI_API_KEY = 'sk-proj-iuyuynpNRRjJyc2u1dvKT3BlbkFJwbPtggxRbPU0mWwMTBpL'
+
+const OPENAI_API_KEY = ''
 
 
 const openai = new OpenAI({
@@ -11,18 +10,6 @@ const openai = new OpenAI({
     baseURL: 'https://api.openai.com/v1/',
     dangerouslyAllowBrowser: true
 });
-
-// const instance = axios.create({
-//     baseURL: "https://test.finup.kz/",
-//     headers: { 
-//         'Content-Type': 'application/json; charset=UTF-8',
-//         'Authorization': 'Bearer ' + OPENAI_API_KEY,
-//         'OpenAI-Organization': 'org-VxvUKowKFUfuYAd31crCkhv2',
-//         'OpenAI-Project': 'proj_U51ESK8E88wHz5elCv0YAgDD'
-//      }
-
-// });
-
 
 const ConnectToChatGPT = {   
     async checkAssistent() {

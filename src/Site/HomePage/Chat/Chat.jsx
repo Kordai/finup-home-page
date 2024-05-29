@@ -10,53 +10,49 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import ConnectToChatGPT from '../../../API/ConnecToChatGPT';
 
-let checkBotStatus =0
-
 const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
 
-    // const chats = useSelector(state => state.chat.chats_id)
-    // const chat_users = useSelector(state => state.chat.chat_users)
-    // const chat_messeges = [
-    //     { chat_id: 1, content: { content: "Здравствуйте! Я Бизнес консультант, могу ответить вам на вопросы касательно работы Бизнеса в Республике Казахстан.", date: "16.04.2024", time: "15:19", type: 0 }, date_create: "16.04.2024", id: 51, user_id: 21 },
-    //     { chat_id: 1, content: { content: "Здравствуйте!", date: "16.04.2024", time: "15:20", type: 0 }, date_create: "18.04.2024", id: 50, user_id: 1 },
-    //     { chat_id: 1, content: { content: "увву", date: "16.04.2024", time: "15:21", type: 0 }, date_create: "16.04.2024", id: 52, user_id: 21 },
-    //     { chat_id: 1, content: { content: "dddd", date: "16.04.2024", time: "15:37", type: 0 }, date_create: "16.04.2024", id: 53, user_id: 21 },
-    //     { chat_id: 1, content: { content: "Дата в Чате готова?", date: "17.04.2024", time: "9:39", type: 0 }, date_create: "17.04.2024", id: 55, user_id: 21 },
-    //     { chat_id: 1, content: { content: "Дату добавил.", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 56, user_id: 1 },
-    //     { chat_id: 1, content: { content: "Что ещё?", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 57, user_id: 1 },
-    //     { chat_id: 1, content: { content: "Что-то делать", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 58, user_id: 1 },
-    //     { chat_id: 1, content: { content: "Нужно добавить статус сообщения.", date: "18.04.2024", time: "10:11", type: 0 }, date_create: "18.04.2024", id: 59, user_id: 21 },
-    //     { chat_id: 1, content: { content: "Что-то делать", date: "18.04.2024", time: "10:10", type: 0 }, date_create: "18.04.2024", id: 58, user_id: 1 },
-    //     { chat_id: 1, content: { content: "Нужно добавить статус сообщения.", date: "18.04.2024", time: "10:11", type: 0 }, date_create: "18.04.2024", id: 59, user_id: 21 }
-    // ]
-    //useSelector(state => state.chat.chat_messeges)
+    const authUser = useSelector(state => state.auth.authUser)
+    const chat_messeges = useSelector(state => state.chat.chat_messeges)
+    const threadId = useSelector(state => state.chat.threadId)
+    const runId = useSelector(state => state.chat.runId)
+    const messageId = useSelector(state => state.chat.messageId)
+    const focusRef = React.useRef(null);
+    const nowDate = dayjs(new Date())
 
+    const [amountMessage, setAmountMessage] = useState(0)
     const [userMessage, setUserMaessage] = useState('')
-    const [threadId, setThreadId] = useState('')
-    const [runId, setRunId] = useState('')
-    const [messageId, setMessageId] = useState('')
     const [statusRun, setStatusRun] = useState('')
     const dispatch = useDispatch()
-    //const [checkBotStatus, setCheckBot] = useState(0)
 
-    const setMessageToChat = React.useCallback((data) => {
-        dispatch({ type: 'CHATS/SET_MESSAGE', messege: data })
-      }, [dispatch])
+    const setThreadId = React.useCallback((threadId) => {
+        dispatch({ type: 'CHATS/SET_THREAD_ID', threadId })
+    }, [dispatch])
+
+    const setRunId = React.useCallback((runId) => {
+        dispatch({ type: 'CHATS/SET_RUN_ID', runId })
+    }, [dispatch])
+
+    const setMessageId = React.useCallback((messageId) => {
+        dispatch({ type: 'CHATS/SET_MESSAGE_ID', messageId })
+    }, [dispatch])
+
 
     useEffect(() => {
-        if (userMessage.length > 0) {
+        if (userMessage.length > 0 && threadId.length === 0) {
             ConnectToChatGPT.threadNew().then((data) => {
                 console.log('new thread');
                 setThreadId(data.id)
             })
         }
-    }, [userMessage, ConnectToChatGPT, setThreadId])
+    }, [userMessage, ConnectToChatGPT, setThreadId, threadId])
 
     useEffect(() => {
-        if (threadId.length > 0) {
+        if (threadId.length > 0 && userMessage.length > 0) {
             ConnectToChatGPT.newMessageCreate(threadId, userMessage).then((data) => {
                 console.log('new mess');
                 setMessageId(data.id)
+                setUserMaessage('')
             })
         }
     }, [threadId, userMessage, ConnectToChatGPT, setMessageId])
@@ -83,40 +79,19 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
                         const date = nowDate.$D + '.' + (nowDate.$M + 1 > 9 ? nowDate.$M + 1 : '0' + (nowDate.$M + 1)) + '.' + nowDate.$y
                         //console.log(data.data[0].content[0].text.value)
                         //setMessageToChat({ chat_id: authUser.chat_id, user_id: 0, content: { type: 0, content: data.data[0].content[0].text.value, time, date } })
-                        
+
                         newMessage({ chat_id: authUser.chat_id, user_id: 0, content: data.data[0].content[0].text.value, type: 0, time, date: date }, { chat_id: authUser.chat_id })
                     })
                 } else {
                     setTimeout(chekingRun(), 5000);
                 }
             })
-        }  
+        }
         if (runId.length > 0) {
             chekingRun()
         }
 
     }, [runId, threadId, ConnectToChatGPT])
-
-
-
-    console.log(statusRun);
-    console.log(checkBotStatus);
-
-    const checkBot = () => {
-        // setInterval(()=> {
-        //     checkBotStatus = checkBotStatus + 1
-        //     setStatusRun('123')
-        //     console.log(checkBotStatus);
-        // }, 5000);
-        
-    }
-
-
-    const authUser = useSelector(state => state.auth.authUser)
-    const chat_messeges = useSelector(state => state.chat.chat_messeges)
-    const focusRef = React.useRef(null);
-    const nowDate = dayjs(new Date())
-    const [amountMessage, setAmountMessage] = useState(0)
 
     const requestNewUser = () => {
         addUserChatRequest()
@@ -129,8 +104,7 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
         return <></>
     }
 
-    //создаем массив из сообщений
-    console.log(chat_messeges);
+    //создаем массив из сообщений    
     const chat = chat_messeges.map((c) => ({ component: getComponent(c), ...c }))
 
     //сортируем и получаем массив дат из существующих сообщений
@@ -156,8 +130,7 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
         const time = (nowDate.$H > 9 ? nowDate.$H : '0' + nowDate.$H) + ':' + (nowDate.$m > 9 ? nowDate.$m : '0' + nowDate.$m)
         const date = nowDate.$D + '.' + (nowDate.$M + 1 > 9 ? nowDate.$M + 1 : '0' + (nowDate.$M + 1)) + '.' + nowDate.$y
         newMessage({ chat_id: authUser.chat_id, user_id: authUser.id, content: mes, type: 0, time, date: date }, { chat_id: authUser.chat_id })
-         setUserMaessage(mes)
-         checkBot()
+        setUserMaessage(mes)
     }
 
     useEffect(() => {

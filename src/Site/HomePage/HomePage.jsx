@@ -21,7 +21,7 @@ const HomePage = () => {
         window.open('https://cabinet.finup.kz/', '_blank');
     }
 
-    const arrayFun = [goCabinet, () => { }, () => { }, () => { }]
+    const arrayFun = [goCabinet, () => {alert('Этот раздел сайт в процессе настройки, по всем вопросам пишите на e-mail: infi@finup.kz') }, () => {alert('Этот раздел сайт в процессе настройки, по всем вопросам пишите на e-mail: infi@finup.kz') }, () => { alert('Этот раздел сайт в процессе настройки, по всем вопросам пишите на e-mail: infi@finup.kz')}]
 
     const screenHeight = (window.screen.height/2) - 50
    

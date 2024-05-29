@@ -16,8 +16,6 @@ import { Button, Divider, MenuList, Stack } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
 
-const pages = ['Главная', 'Услуги', 'Online Бухгалтер', 'Цены', 'Контакты'];
-
 function AppBarSite() {
 
 
@@ -43,13 +41,13 @@ function AppBarSite() {
     // };
 
     const settings= [
-        { title: 'Главная', onClick: () => { } },
-        { title: 'Услуги', onClick: () => { } },
-        { title: 'Online Бухгалтер', onClick: () => { } },
-        { title: 'Цены', onClick: () => { } },
-        { title: 'Контакты', onClick: () => { } },
+        { title: 'Главная', onClick: () => {window.open('https://finup.kz/', '_blank') } },
+        { title: 'Услуги', onClick: () => {window.open('https://finup.kz/#section_2', '_blank') } },
+        { title: 'Online Бухгалтер', onClick: () => {window.open('https://finup.kz/online_buh/', '_blank') } },
+        { title: 'Цены', onClick: () => {window.open('https://finup.kz/price/', '_blank') } },
+        { title: 'Контакты', onClick: () => {window.open('https://finup.kz/about_us/', '_blank') } },
         // { title: 'Платежи', onClick: handleOpenFormPayments }, 
-        { title: 'Выход', onClick: () => { } }
+        //{ title: 'Выход', onClick: () => { } }
     ]
 
 
@@ -65,13 +63,13 @@ function AppBarSite() {
                         </Stack>
                     </a>
                     <Box sx={{ ml: 10, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
+                        {settings.map((page) => (
                             <Button
-                                key={page}
-                                
+                                key={page.title}
+                                onClick={page.onClick}
                                 sx={{ display: 'block', color: '#5d5d5d' }}
                             >
-                                {page}
+                                {page.title}
                             </Button>
                         ))}
                     </Box>
@@ -111,7 +109,7 @@ function AppBarSite() {
                     </Box>
                     <Box sx={{ flexGrow: 1, display: 'block', textAlign: "right", width: 0 }}>
                         <Tooltip title="Личный кабинет">
-                            <IconButton  sx={{ p: 0 }}>
+                            <IconButton  sx={{ p: 0 }} onClick={()=>window.open('https://cabinet.finup.kz/', '_blank')} >
                                 <AccountBoxRoundedIcon fontSize="large" color='secondary' />
                                 <Typography
                                 variant="h6"
