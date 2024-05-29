@@ -186,7 +186,7 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
 
                 }} >
                     <Typography color="text.secondary" variant="body2" textAlign='center' sx={{ color: 'white', fontSize: { xs: 'default', sm: 16 } }} >
-                        ИИ FinUP.kz - Бизнес консультант
+                        ИИ FinUP.kz - Бизнес консультант <span style={{color: 'yellow'}} >!!!Beta тест!!!</span>
                     </Typography>
                 </Box >
             </Grid>
