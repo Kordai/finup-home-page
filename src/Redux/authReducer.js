@@ -3,15 +3,20 @@ import ConnectToServer from "../API/ConnectToServer";
 //Action type
 const SET_USER = 'AUTH/SET_USER';
 const SET_BACKDROP = 'AUTH/SET_BACKDROP';
+const SET_OPEN_FORM_ACCOUNTANT = 'AUTH/SET_OPEN_FORM_ACCOUNTANT';
+const SET_OPEN_FORM_CLIENT = 'AUTH/SET_OPEN_FORM_CLIENT';
+const SET_OPEN_FORM_FNO = 'AUTH/SET_OPEN_FORM_FNO';
 
 //Started props
-let initialState = {  
-    
+let initialState = {
+    openFormNewAccountant: false,
+    openFormNewClient: false,
+    openFormNewFNO: false,
     authUser: {
         id: 0,
     },
     backdrop: false,
-    
+
 };
 
 //Reducers functions SET_LOGOUT
@@ -23,8 +28,24 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 authUser: action.user
             }
+        case SET_OPEN_FORM_ACCOUNTANT:
+            return {
+                ...state,
+                openFormNewAccountant: action.data
+            }
 
-        
+        case SET_OPEN_FORM_CLIENT:
+            return {
+                ...state,
+                openFormNewClient: action.data
+            }
+
+        case SET_OPEN_FORM_FNO:
+            return {
+                ...state,
+                openFormNewFNO: action.data
+            }
+
 
         default:
             return state;
@@ -37,8 +58,16 @@ const setUser = (data) => {
     return { type: 'AUTH/SET_USER', user: data }
 }
 
-const setBackdrop = (data) => {
-    return { type: SET_BACKDROP, data }
+const setOpenFormAccountant = (data) => {
+    return { type: SET_OPEN_FORM_ACCOUNTANT, data }
+}
+
+const setOpenFormClient = (data) => {
+    return { type: SET_OPEN_FORM_CLIENT, data }
+}
+
+const setOpenFormFNO = (data) => {
+    return { type: SET_OPEN_FORM_FNO, data }
 }
 
 // //Thunk functions
@@ -64,7 +93,7 @@ export const authUserRequest = (obj) => {
             } else {
                 console.log(data.message)
                 //выход
-                
+
                 //dispatch(toggleIsFetching(false))
             }
         }
@@ -73,11 +102,41 @@ export const authUserRequest = (obj) => {
 
 export const addUserChatRequest = () => {
     return async (dispatch) => {
-        const data = await ConnectToServer.addUserChat()        
+        const data = await ConnectToServer.addUserChat()
         if (data) {
             dispatch(setUser(data.user))
             console.log(data.user);
             localStorage.setItem('finupkzuserchat', JSON.stringify(data.user))
+        }
+    }
+}
+
+export const newAccountantRequest = (obj) => {
+    return async (dispatch) => {
+        const data = await ConnectToServer.sendNewAccountant(obj)
+        if (data) {
+            console.log(data);
+            dispatch(setOpenFormAccountant(false))
+        }
+    }
+}
+
+export const newClientRequest = (obj) => {
+    return async (dispatch) => {
+        const data = await ConnectToServer.sendNewClient(obj)
+        if (data) {
+            console.log(data);
+            dispatch(setOpenFormClient(false))
+        }
+    }
+}
+
+export const newFNORequest = (obj) => {
+    return async (dispatch) => {
+        const data = await ConnectToServer.sendNewFNO(obj)
+        if (data) {
+            console.log(data);
+            dispatch(setOpenFormFNO(false))
         }
     }
 }

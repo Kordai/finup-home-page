@@ -30,6 +30,24 @@ const ConnectToServer = {
             .then(response => response.data)
             .catch(error => notInternet(error))
     },
+
+    sendNewAccountant(obj) {  
+        return instance.post('new_accountant_send.php', obj)
+            .then(response => response.data)
+            .catch(error => notInternet(error))
+    },
+
+    sendNewClient(obj) {  
+        return instance.post('new_client_send.php', obj)
+            .then(response => response.data)
+            .catch(error => notInternet(error))
+    },
+
+    sendNewFNO(obj) {  
+        return instance.post('new_fno_send.php', obj)
+            .then(response => response.data)
+            .catch(error => notInternet(error))
+    },
 }
 
 export default ConnectToServer;
