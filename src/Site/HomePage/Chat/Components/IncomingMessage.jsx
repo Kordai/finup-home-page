@@ -11,7 +11,7 @@ const IncomingMessage = ({ message, refus }) => {
                 direction="row"
                 justifyContent="flex-start"
                 alignItems="baseline"
-                spacing={1}
+                spacing={0}
                 wrap="nowrap">
                 <Grid item>
                     <SmartToyRoundedIcon color='secondary' />

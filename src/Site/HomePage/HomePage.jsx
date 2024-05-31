@@ -23,10 +23,10 @@ const HomePage = () => {
 
     const arrayFun = [goCabinet, () => {alert('Этот раздел сайт в процессе настройки, по всем вопросам пишите на e-mail: infi@finup.kz') }, () => {alert('Этот раздел сайт в процессе настройки, по всем вопросам пишите на e-mail: infi@finup.kz') }, () => { alert('Этот раздел сайт в процессе настройки, по всем вопросам пишите на e-mail: infi@finup.kz')}]
 
-    const screenHeight = (window.screen.height/2) - 50
+    const screenHeight = (window.screen.height/2) + 40
    
-    return <Container maxWidth="xl" sx={{ mt: { xs: 8, md: 12 } }}>
-        <Grid container spacing={{ xs: 1, md: 2 }} >
+    return <Container maxWidth="xl" sx={{ mt: { xs: 8, md: 12 }, p:0 }}>
+        <Grid container spacing={{ xs: 2, md: 2 }} sx={{px: 3}} >
             {btn.map((b, index) =>
                 <ServiceCard key={index} logo={b.logo} title={b.title} subheader={b.subheader} text1={b.text1} text2={b.text2} btnName={b.btnName} fun={arrayFun[index]} />
             )}

@@ -47,7 +47,7 @@ function AppBarSite() {
         { title: 'Цены', onClick: () => {window.open('https://finup.kz/price/', '_blank') } },
         { title: 'Контакты', onClick: () => {window.open('https://finup.kz/about_us/', '_blank') } },
         // { title: 'Платежи', onClick: handleOpenFormPayments }, 
-        //{ title: 'Выход', onClick: () => { } }
+        //{ title: 'Выход', onClick: () => {localStorage.clear(); window.location.reload(true); } }
     ]
 
 

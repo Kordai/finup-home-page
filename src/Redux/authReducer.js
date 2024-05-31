@@ -34,7 +34,7 @@ const authReducer = (state = initialState, action) => {
 //Action Creators functions
 
 const setUser = (data) => {
-    return { type: SET_USER, user: data }
+    return { type: 'AUTH/SET_USER', user: data }
 }
 
 const setBackdrop = (data) => {
@@ -73,10 +73,10 @@ export const authUserRequest = (obj) => {
 
 export const addUserChatRequest = () => {
     return async (dispatch) => {
-        const data = await ConnectToServer.addUserChat()
-        console.log(data);
+        const data = await ConnectToServer.addUserChat()        
         if (data) {
             dispatch(setUser(data.user))
+            console.log(data.user);
             localStorage.setItem('finupkzuserchat', JSON.stringify(data.user))
         }
     }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Chip, Grid, Typography } from '@mui/material';
+import { Box, Chip, Grid, LinearProgress, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import BottomBar from './Components/BottomBar';
 import IncomingMessage from './Components/IncomingMessage';
@@ -23,6 +23,7 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
     const [amountMessage, setAmountMessage] = useState(0)
     const [userMessage, setUserMaessage] = useState('')
     const [statusRun, setStatusRun] = useState('')
+    const [sendUserData, setSendUserData] = useState({})
     const dispatch = useDispatch()
 
     const setThreadId = React.useCallback((threadId) => {
@@ -37,9 +38,13 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
         dispatch({ type: 'CHATS/SET_MESSAGE_ID', messageId })
     }, [dispatch])
 
+    const setIsFetching = React.useCallback((isFetching) => {
+        dispatch({ type: 'CHATS/SET_IS_FETCHING', isFetching })
+    }, [dispatch])
 
     useEffect(() => {
         if (userMessage.length > 0 && threadId.length === 0) {
+            setIsFetching(true)
             ConnectToChatGPT.threadNew().then((data) => {
                 console.log('new thread');
                 setThreadId(data.id)
@@ -49,10 +54,12 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
 
     useEffect(() => {
         if (threadId.length > 0 && userMessage.length > 0) {
+            setIsFetching(true)
             ConnectToChatGPT.newMessageCreate(threadId, userMessage).then((data) => {
                 console.log('new mess');
                 setMessageId(data.id)
                 setUserMaessage('')
+                setSendUserData('')
             })
         }
     }, [threadId, userMessage, ConnectToChatGPT, setMessageId])
@@ -79,8 +86,8 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
                         const date = nowDate.$D + '.' + (nowDate.$M + 1 > 9 ? nowDate.$M + 1 : '0' + (nowDate.$M + 1)) + '.' + nowDate.$y
                         //console.log(data.data[0].content[0].text.value)
                         //setMessageToChat({ chat_id: authUser.chat_id, user_id: 0, content: { type: 0, content: data.data[0].content[0].text.value, time, date } })
-
-                        newMessage({ chat_id: authUser.chat_id, user_id: 0, content: data.data[0].content[0].text.value, type: 0, time, date: date }, { chat_id: authUser.chat_id })
+                        newMessage({ chat_id: authUser.chat_id, user_id: 0, content: data.data[0].content[0].text.value, type: 0, time, date: date })
+                        setIsFetching(false)
                     })
                 } else {
                     setTimeout(chekingRun(), 5000);
@@ -123,21 +130,28 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
     }))
 
     const setNewMassage = (mes) => {
-        if (authUser.id === 0) {
-            requestNewUser()
-            setTimeout(() => { }, 2000)
-        }
         const time = (nowDate.$H > 9 ? nowDate.$H : '0' + nowDate.$H) + ':' + (nowDate.$m > 9 ? nowDate.$m : '0' + nowDate.$m)
         const date = nowDate.$D + '.' + (nowDate.$M + 1 > 9 ? nowDate.$M + 1 : '0' + (nowDate.$M + 1)) + '.' + nowDate.$y
-        newMessage({ chat_id: authUser.chat_id, user_id: authUser.id, content: mes, type: 0, time, date: date }, { chat_id: authUser.chat_id })
-        setUserMaessage(mes)
+        
+        if (authUser.id === 0) {
+            requestNewUser()
+            setTimeout(() => { }, 4000)
+        }       
+        setSendUserData({ chat_id: authUser.chat_id, user_id: authUser.id, content: mes, type: 0, time, date: date })
+        setUserMaessage(mes)        
     }
+
+    useEffect(() => {
+        if (authUser.id !== 0 && Object.keys(sendUserData).length !== 0 && authUser.chat_id !== 0) {
+            newMessage({...sendUserData, chat_id: authUser.chat_id, user_id: authUser.id})
+        }
+    }, [authUser.id, sendUserData, newMessage, authUser.chat_id])
 
     useEffect(() => {
         if (authUser.id !== 0) {
             getAllMessages({ chat_id: authUser.chat_id })
         }
-    }, [authUser, getAllMessages])
+    }, [authUser.id, getAllMessages])
 
 
 
@@ -158,9 +172,9 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
         overflowY: 'auto',
         display: 'flex',
         flexDirection: 'column',
-        border: 3,
+        border: 0,
         borderColor: '#7d83cc',
-        borderRadius: 5,
+        borderRadius: 0,
         height: '100%',
         width: '100%',
         position: 'sticky',
@@ -182,7 +196,7 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
                     position: 'absolute',
                     width: '100%',
                     bgcolor: '#7d83cc',
-
+                    borderRadius: 5
 
                 }} >
                     <Typography color="text.secondary" variant="body2" textAlign='center' sx={{ color: 'white', fontSize: { xs: 'default', sm: 16 } }} >
@@ -196,18 +210,20 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
                     overflowY: 'auto',
                     display: 'flex',
                     flexDirection: 'column',
-                    height: { xs: '89%', sm: '87%' },
-                    width: '98%',
+                    height: { xs: '86%', sm: '87%' },
+                    width: '100%',
                     position: 'absolute',
                     top: { xs: 20, sm: 23 }
                 }} >
-                    <Box sx={{ px: 1, textAlign: 'center', pb: { xs: 3, sm: 0 } }}>
+                    <Box sx={{ px: 0.5, textAlign: 'center', pb: { xs: 3, sm: 0 } }}>
                         {componentChat.map((c) => [c.date, ...c.message])}
                     </Box >
                 </Box >
             </Grid>
             <Grid item >
+            
                 <Box sx={{ display: 'flex', WebkitBoxFlex: 0, flexGrow: 0, position: 'absolute', width: '-webkit-fill-available', bottom: '0' }}>
+                
                     <BottomBar newMessage={setNewMassage} />
                 </Box >
             </Grid>

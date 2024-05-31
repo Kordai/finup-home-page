@@ -26,7 +26,6 @@ const ConnectToServer = {
     },
     
     getMessages(idChat) {  
-        console.log(idChat);
         return instance.post('get_all_messages.php', idChat)
             .then(response => response.data)
             .catch(error => notInternet(error))

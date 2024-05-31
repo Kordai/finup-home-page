@@ -9,15 +9,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
  
-  const authUser = useSelector(state => state.auth.authUser)
-  console.log(authUser);
+  //const authUser = useSelector(state => state.auth.authUser)
   const userID = useSelector(state => state.auth.authUser.id)
   const dispatch = useDispatch()
 
  // const backdrop = useSelector(state => state.auth.backdrop)   
-  const user_1 = JSON.parse(localStorage.getItem("finupkzuserchat"))
-
-  console.log(user_1);
+  //const user_1 = JSON.parse(localStorage.getItem("finupkzuserchat"))
 
   const setUser = useCallback((data) => {
     dispatch({ type: 'AUTH/SET_USER', user: data })
