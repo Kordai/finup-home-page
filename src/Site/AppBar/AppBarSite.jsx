@@ -33,19 +33,12 @@ function AppBarSite() {
         setAnchorElUser(null);
     };
 
-    // const handleExitUser = () => {        
-    //     localStorage.clear("finupkzuser")
-    //     setAnchorElUser(null)
-    //     navigate("/")
-    //     window.location.reload()
-    // };
-
     const settings= [
-        { title: 'Главная', onClick: () => {window.open('https://finup.kz/', '_blank') } },
-        { title: 'Услуги', onClick: () => {window.open('https://finup.kz/#section_2', '_blank') } },
-        { title: 'Online Бухгалтер', onClick: () => {window.open('https://finup.kz/online_buh/', '_blank') } },
-        { title: 'Цены', onClick: () => {window.open('https://finup.kz/price/', '_blank') } },
-        { title: 'Контакты', onClick: () => {window.open('https://finup.kz/about_us/', '_blank') } },
+        { title: 'Главная', onClick: () => {window.open('https://finup.kz/') } },
+        { title: 'Аутсорсинг бухгалтерии', onClick: () => {window.open('https://finup.kz/buh/') } },
+        { title: 'Online Бухгалтер', onClick: () => {window.open('https://finup.kz/buh/online_buh/') } },
+        { title: 'Цены', onClick: () => {window.open('https://finup.kz/buh/price/') } },
+        { title: 'Контакты', onClick: () => {window.open('https://finup.kz/buh/about_us/') } },
         // { title: 'Платежи', onClick: handleOpenFormPayments }, 
         //{ title: 'Выход', onClick: () => {localStorage.clear(); window.location.reload(true); } }
     ]
