@@ -6,6 +6,7 @@ import HomePageContainer from './Site/HomePage/HomePageContainer';
 import AppBarContainer from './Site/AppBar/AppBarContainer';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ServicePageContainer from './Site/ServicesPage/ServicePageContainer';
 
 function App() {
  
@@ -39,6 +40,7 @@ function App() {
     <main>
       <Routes>        
         <Route path="/" element={<HomePageContainer />} />
+        <Route path="/uslugi_buhgaltera" element={<ServicePageContainer />} />
                
       </Routes>
     </main>
