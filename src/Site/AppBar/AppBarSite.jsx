@@ -6,7 +6,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 // import logo from '../Img/finup_logo_.png';
@@ -15,11 +14,12 @@ import logo2 from '../../Img/NEW_LOGO_05_2024.png';
 import { Button, Divider, MenuList, Stack } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
+import { useNavigate } from 'react-router-dom';
 
 function AppBarSite() {
 
 
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -34,8 +34,8 @@ function AppBarSite() {
     };
 
     const settings= [
-        { title: 'Главная', onClick: () => {window.open('https://finup.kz/') } },
-        { title: 'Аутсорсинг бухгалтерии', onClick: () => {window.open('https://finup.kz/buh/') } },
+        { title: 'Главная', onClick: () => {navigate('/'); handleCloseExitMenu() } },
+        { title: 'Аутсорсинг бухгалтерии', onClick: () => {navigate('/uslugi_buhgaltera'); handleCloseExitMenu() } },
         { title: 'Online Бухгалтер', onClick: () => {window.open('https://finup.kz/buh/online_buh/') } },
         { title: 'Цены', onClick: () => {window.open('https://finup.kz/buh/price/') } },
         { title: 'Контакты', onClick: () => {window.open('https://finup.kz/buh/about_us/') } },

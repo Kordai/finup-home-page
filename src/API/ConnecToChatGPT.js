@@ -2,7 +2,6 @@ import OpenAI from "openai";
 
 
 
-
 const openai = new OpenAI({
     organization: 'org-VxvUKowKFUfuYAd31crCkhv2',
     project: 'proj_U51ESK8E88wHz5elCv0YAgDD',
