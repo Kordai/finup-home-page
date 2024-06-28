@@ -2,22 +2,16 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, CardMedia, Chip, Divider, Stack } from '@mui/material';
+import { Button,  CardMedia, Chip, Stack } from '@mui/material';
 import MovingRoundedIcon from '@mui/icons-material/MovingRounded';
 import monitor from '../../../Img/monitor2.jpg';
-import AppRegistrationRoundedIcon from '@mui/icons-material/AppRegistrationRounded';
-import AppShortcutRoundedIcon from '@mui/icons-material/AppShortcutRounded';
-import DoneAllRoundedIcon from '@mui/icons-material/DoneAllRounded';
 import DoneOutlineRoundedIcon from '@mui/icons-material/DoneOutlineRounded';
-import DomainVerificationRoundedIcon from '@mui/icons-material/DomainVerificationRounded';
-import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 
 const ServicesCardPC = ({ }) => {
 
     return (
-        <Card sx={{ boxShadow: 'gray 0px 8px 10px -3px;', borderRadius: 1 }}>
+        <Card sx={{ boxShadow: 0, borderRadius: 1 }}>
 
             <CardMedia
                 component="img"
@@ -29,81 +23,61 @@ const ServicesCardPC = ({ }) => {
 
                 <CardHeader
                     sx={{ p: 0, pb: { xs: 2, md: 2 } }}
-                    avatar={
-                        <Avatar variant="rounded" sx={{ bgcolor: '#ffe57f', width: 24, height: 24 }} aria-label="recipe" >
-                            <MovingRoundedIcon color='secondary' />
-                        </Avatar>
-                    }
 
-                    title={<Typography variant="h3" sx={{ fontSize: { xs: '1.2rem', sm: '1.7rem' }, fontWeight: { xs: '600', sm: '400' } }} color="text.secondary" textAlign={'left'} >
-                        Аутсорсинг Бухгалтерии
-                    </Typography>}
+                    title={
+                        <Chip icon={<MovingRoundedIcon sx={{ width: { xs: 30, sm: 40 }, height: { xs: 30, sm: 40 } }} color='secondary' />}
+                            label={
+                                <Typography variant="h3" sx={{ fontSize: { xs: '1.2rem', sm: '1.7rem' }, fontWeight: { xs: '600', sm: '400' } }} color="text.secondary" textAlign={'center'} >
+                                    Аутсорсинг Бухгалтерии
+                                </Typography>
+                            }
+                            sx={{ borderColor: '#fcbb42', border: 0 }}
+                            variant="outlined" />}
                 // subheader={<Typography variant="h3" sx={{ fontSize: { xs: '0.7rem', sm: '0.8rem' }, display: { xs: 'none', sm: 'block' } }} color="text.secondary" textAlign={'left'} >
                 //     {subheader}
                 // </Typography>}
                 />
                 <Stack
                     // divider={<Divider sx={{ backgroundColor: '#fcbb42' }} flexItem />}
-                    maxWidth={{ xs: '99%', sm: '80%' }}
+                    maxWidth={{ xs: '99%', sm: '60%' }}
                     marginX={'auto'}
-                    spacing={1}
+                    spacing={0}
                 >
-                    <Chip icon={<DoneOutlineRoundedIcon color='secondary' />}
-                        label={
-                            <Typography variant="body2" textAlign={'left'} sx={{ fontSize: { xs: '1rem', sm: '1.2rem' }, ml: 1 }} >
-                                Бухгалтерское обслуживание
-                            </Typography>
-                        }
-                        sx={{ borderColor: '#fcbb42' }}
-                        variant="outlined" />
-                    <Chip icon={<DoneOutlineRoundedIcon color='secondary' />}
-                        label={
-                            <Typography variant="body2" textAlign={'left'} sx={{ fontSize: { xs: '1rem', sm: '1.2rem' }, ml: 1 }} >
-                                Постановка бухучёта
-                            </Typography>
-                        }
-                        sx={{ borderColor: '#fcbb42' }}
-                        variant="outlined" />
-                    <Chip icon={<DoneOutlineRoundedIcon color='secondary' />}
-                        label={
-                            <Typography variant="body2" textAlign={'left'} sx={{ fontSize: { xs: '1rem', sm: '1.2rem' }, ml: 1 }} >
-                                Восстановление бухучёта
-                            </Typography>
-                        }
-                        sx={{ borderColor: '#fcbb42' }}
-                        variant="outlined" />
-                    <Chip icon={<DoneOutlineRoundedIcon color='secondary' />}
-                        label={
-                            <Typography variant="body2" textAlign={'left'} sx={{ fontSize: { xs: '1rem', sm: '1.2rem' }, ml: 1 }} >
-                                Ведение участков бухгалтерии
-                            </Typography>
-                        }
-                        sx={{ borderColor: '#fcbb42' }}
-                        variant="outlined" />
-                    <Chip icon={<DoneOutlineRoundedIcon color='secondary' />}
-                        label={
-                            <Typography variant="body2" textAlign={'left'} sx={{ fontSize: { xs: '1rem', sm: '1.2rem' }, ml: 1 }} >
-                                Расчет зарплаты
-                            </Typography>
-                        }
-                        sx={{ borderColor: '#fcbb42' }}
-                        variant="outlined" />
-                    <Chip icon={<DoneOutlineRoundedIcon color='secondary' />}
-                        label={
-                            <Typography variant="body2" textAlign={'left'} sx={{ fontSize: { xs: '1rem', sm: '1.2rem' }, ml: 1 }} >
-                                Налоговый учет
-                            </Typography>
-                        }
-                        sx={{ borderColor: '#fcbb42' }}
-                        variant="outlined" />
-                    <Chip icon={<DoneOutlineRoundedIcon color='secondary' />}
-                        label={
-                            <Typography variant="body2" textAlign={'left'} sx={{ fontSize: { xs: '1rem', sm: '1.2rem' }, ml: 1 }} >
-                                Кадровый учет
-                            </Typography>
-                        }
-                        sx={{ borderColor: '#fcbb42' }}
-                        variant="outlined" />
+                    <Button startIcon={<DoneOutlineRoundedIcon color='secondary' />} title='Бухгалтерское обслуживание' >
+                        <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'left'} >
+                            Бухгалтерское обслуживание
+                        </Typography>
+                    </Button>
+                    <Button startIcon={<DoneOutlineRoundedIcon color='secondary' />} title='Постановка бухучёта' >
+                        <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'left'} >
+                            Постановка бухучёта
+                        </Typography>
+                    </Button>
+                    <Button startIcon={<DoneOutlineRoundedIcon color='secondary' />} title='Восстановление бухучёта' >
+                        <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'left'} >
+                            Восстановление бухучёта
+                        </Typography>
+                    </Button>
+                    <Button startIcon={<DoneOutlineRoundedIcon color='secondary' />} title='Ведение участков бухгалтерии' >
+                        <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'left'} >
+                            Ведение участков бухгалтерии
+                        </Typography>
+                    </Button>
+                    <Button startIcon={<DoneOutlineRoundedIcon color='secondary' />} title='Расчет зарплаты' >
+                        <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'left'} >
+                            Расчет зарплаты
+                        </Typography>
+                    </Button>
+                    <Button startIcon={<DoneOutlineRoundedIcon color='secondary' />} title='Налоговый учет' >
+                        <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'left'} >
+                            Налоговый учет
+                        </Typography>
+                    </Button>
+                    <Button startIcon={<DoneOutlineRoundedIcon color='secondary' />} title='Кадровый учет' >
+                        <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'left'} >
+                            Кадровый учет
+                        </Typography>
+                    </Button>
                 </Stack>
 
             </CardContent>
