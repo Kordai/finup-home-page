@@ -36,7 +36,7 @@ function AppBarSite() {
     const settings= [
         { title: 'Главная', onClick: () => {navigate('/'); handleCloseExitMenu() } },
         { title: 'Аутсорсинг бухгалтерии', onClick: () => {navigate('/uslugi_buhgaltera'); handleCloseExitMenu() } },
-        { title: 'Online Бухгалтер', onClick: () => {window.open('https://finup.kz/buh/online_buh/') } },
+        { title: 'Онлайн Бухгалтер', onClick: () => {window.open('https://finup.kz/buh/online_buh/') } },
         { title: 'Цены', onClick: () => {window.open('https://finup.kz/buh/price/') } },
         { title: 'Контакты', onClick: () => {window.open('https://finup.kz/buh/about_us/') } },
         // { title: 'Платежи', onClick: handleOpenFormPayments }, 
@@ -51,8 +51,8 @@ function AppBarSite() {
                     {/* <img style={{ height: "45px" }} alt="complex" src={logo} /> */}
                     {/* <Avatar src={logo1} sx={{ width: 56, height: 56 }} variant="rounded"/> */}
                     <a href='/' style={{ textDecoration: 'none' }} >
-                        <Stack direction="row" alignItems="center" spacing={1}>
-                            <img src={logo2} width={'192px'} alt='Аутсорсинг Бухгалтерии FinUp.kz' />
+                        <Stack  alignItems="center" spacing={1}>
+                            <img src={logo2} width={'192px'} alt='Онлайн Бухгалтер | Аутсорсинг Бухгалтерии FinUp.kz' />
                         </Stack>
                     </a>
                     <Box sx={{ ml: 10, display: { xs: 'none', md: 'flex' } }}>

@@ -3,11 +3,11 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 //import { Backdrop, CircularProgress } from '@mui/material';
 import HomePageContainer from './Site/HomePage/HomePageContainer';
-import AppBarContainer from './Site/AppBar/AppBarContainer';
+import AppBarSiteContainer from './Site/AppBar/AppBarSiteContainer';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ServicePageContainer from './Site/ServicesPage/ServicePageContainer';
-import { Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 
 function App() {
 
@@ -36,7 +36,7 @@ function App() {
 
   return (<>
 
-    <AppBarContainer />
+    <AppBarSiteContainer />
 
     <main>
       <Routes>
@@ -46,9 +46,15 @@ function App() {
       </Routes>
     </main>
     <footer>
-      <Typography variant="h6" fontStyle={'italic'} fontSize={{ xs: '0.7em', md: '1em' }} textAlign={'center'} color={'#5d5d5d'} sx={{ mt: { xs: 0.5, md: 2 } }} >
-        Copyright © 2022-2024 г. FinUp.kz Услуги бухгалтерского сопровождения и Мобильное приложение для Бухгалтерии.
-      </Typography>
+      <Container maxWidth="xl" >
+        <Grid container spacing={1} >
+          <Grid item   >
+            <Typography variant="h6" fontStyle={'italic'} fontSize={{ xs: '0.7em', md: '1em' }} textAlign={'center'} color={'#5d5d5d'} sx={{ mt: { xs: 0.5, md: 2 } }} >
+              Copyright © 2022-2024 г. FinUp.kz Услуги бухгалтерского сопровождения и Мобильное приложение для Бухгалтерии.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Container>
     </footer>
     {/* <Backdrop
       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}

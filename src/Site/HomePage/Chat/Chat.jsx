@@ -178,7 +178,9 @@ const Chat = ({ addUserChatRequest, newMessage, getAllMessages }) => {
         height: '100%',
         width: '100%',
         position: 'sticky',
-
+        borderColor: '#7d83cc',
+        border: 1,
+        borderRadius: 3
     }} >
 
         <Grid

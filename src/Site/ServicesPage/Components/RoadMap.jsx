@@ -46,7 +46,7 @@ const RoadMap = () => {
 
                 <TimelineItem>
                     <TimelineOppositeContent sx={{ m: 'auto 0' }} fontSize={{ xs: 11, sm: 16 }} color="text.secondary">
-                    Мы подписываем договор, которые гарантируют сохранность Вашей информации.
+                    Мы подписываем договор, который гарантирует сохранность Вашей информации.
                     </TimelineOppositeContent>
                     <TimelineSeparator sx={{minHeight: 90}}>
                     <TimelineConnector sx={{ bgcolor: '#07139e' }} />
@@ -60,7 +60,7 @@ const RoadMap = () => {
 
                 <TimelineItem>
                     <TimelineOppositeContent sx={{ m: 'auto 0' }} fontSize={{ xs: 11, sm: 16 }} color="text.secondary">
-                    Мы принимаем от вас документы и определяем и согласовываем с вами график работы.
+                    Мы принимаем от вас документы, определяем и согласовываем с вами график работы.
                     </TimelineOppositeContent>
                     <TimelineSeparator sx={{minHeight: 90}}>
                     <TimelineConnector sx={{ bgcolor: '#07139e' }} />
