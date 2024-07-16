@@ -8,6 +8,9 @@ import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ServicePageContainer from './Site/ServicesPage/ServicePageContainer';
 import { Container, Grid, Typography } from '@mui/material';
+import OnlineBuhgalteriyaPageContainer from './Site/OnlineBuh/OnlineBuhgalteriya/OnlineBuhgalteriyaPageContainer';
+import SettingsOnlineBuhgalterPageContainer from './Site/OnlineBuh/SettingsOnlineBuhgalter/SettingsOnlineBuhgalterContainer'
+import FunctionsOnlineBuhgalterPageContainer from './Site/OnlineBuh/FunctionsOnlineBuhgalter/FunctionsOnlineBuhgalterPageContainer';
 
 function App() {
 
@@ -42,6 +45,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePageContainer />} />
         <Route path="/uslugi_buhgaltera" element={<ServicePageContainer />} />
+        <Route path="/online_buhgalteriya" element={<OnlineBuhgalteriyaPageContainer />} />
+        <Route path="/instrukciy_online_buhgalter" element={<SettingsOnlineBuhgalterPageContainer />} />
+        <Route path="/functions_online_buhgalter" element={<FunctionsOnlineBuhgalterPageContainer />} />
 
       </Routes>
     </main>

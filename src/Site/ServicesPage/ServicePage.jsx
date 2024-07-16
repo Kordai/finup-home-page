@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import NewAccountant from '../Forms/NewAccountant';
 import ServicesCardPC from './Components/ServicesCardPC';
 import ServicesCardMobile from './Components/ServicesCardMobile';
-import Segments from './Components/Segments';
 import RoadMap from './Components/RoadMap';
 import youtube from '../../Img/YouTube.png'
 import instagram from '../../Img/Instagram.png'
@@ -13,6 +12,7 @@ import facebook from '../../Img/Facebook.png'
 import whatsapp from '../../Img/WhatsApp.png'
 import telegram from '../../Img/telegram.png'
 import logo from '../../Img/NEW_LOGO_05_2024.png'
+import Segments from '../Components/Segments'
 
 const text_segment_1 = [
     'В FinUp.kz мы понимаем, насколько важна правильная и своевременная работа с документами для успешного ведения бизнеса. Наши услуги включают:',
