@@ -11,6 +11,9 @@ import client from '../../Img/client.jpg'
 import delivery from '../../Img/delivery.jpg'
 import rashody from '../../Img/rashody.jpg'
 import dot from '../../Img/dot.jpg'
+import wages from '../../Img/wages.jpg'
+import chat from '../../Img/chat.jpg'
+import stat from '../../Img/statistic.jpg'
 import new_applications from '../../Img/new_application.jpg'
 import { Container, Grid } from '@mui/material';
 
@@ -45,6 +48,14 @@ const SegmentsRounded = ({ title, text, textBold, imgIndex }) => {
             case 10:
                 return new_applications
 
+            case 11:
+                return chat
+
+            case 12:
+                return wages
+
+            case 14:
+                return stat
 
             default:
                 return tax

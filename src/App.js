@@ -11,6 +11,7 @@ import { Container, Grid, Typography } from '@mui/material';
 import OnlineBuhgalteriyaPageContainer from './Site/OnlineBuh/OnlineBuhgalteriya/OnlineBuhgalteriyaPageContainer';
 import SettingsOnlineBuhgalterPageContainer from './Site/OnlineBuh/SettingsOnlineBuhgalter/SettingsOnlineBuhgalterContainer'
 import FunctionsOnlineBuhgalterPageContainer from './Site/OnlineBuh/FunctionsOnlineBuhgalter/FunctionsOnlineBuhgalterPageContainer';
+import LevelsOnlineBuhgalterPageContainer from './Site/OnlineBuh/LevelOnlineBuhgalter/LevelsOnlineBuhgalterPageContainer';
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
         <Route path="/online_buhgalteriya" element={<OnlineBuhgalteriyaPageContainer />} />
         <Route path="/instrukciy_online_buhgalter" element={<SettingsOnlineBuhgalterPageContainer />} />
         <Route path="/functions_online_buhgalter" element={<FunctionsOnlineBuhgalterPageContainer />} />
+        <Route path="/sections_online_buhgalter" element={<LevelsOnlineBuhgalterPageContainer />} />
 
       </Routes>
     </main>

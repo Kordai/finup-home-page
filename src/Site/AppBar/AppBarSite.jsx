@@ -55,7 +55,7 @@ function AppBarSite() {
         { title: 'Обзор сервиса', onClick: () => { navigate('/online_buhgalteriya'); handleCloseExitMenu(); handleCloseOnlineBuh(); } },
         { title: 'Первые настройки', onClick: () => { navigate('/instrukciy_online_buhgalter'); handleCloseExitMenu(); handleCloseOnlineBuh(); } },
         { title: 'Функции', onClick: () => { navigate('/functions_online_buhgalter'); handleCloseExitMenu(); handleCloseOnlineBuh(); } },
-        { title: 'Основные разделы', onClick: () => { handleCloseExitMenu(); handleCloseOnlineBuh(); } },
+        { title: 'Основные разделы', onClick: () => { navigate('/sections_online_buhgalter'); handleCloseExitMenu(); handleCloseOnlineBuh(); } },
         { title: 'Подпись и печать', onClick: () => { handleCloseExitMenu(); handleCloseOnlineBuh(); } },
         { title: 'Частые вопросы', onClick: () => { handleCloseExitMenu(); handleCloseOnlineBuh(); } },
         { title: 'Поддержка', onClick: () => { handleCloseExitMenu(); handleCloseOnlineBuh(); } }, 
