@@ -13,6 +13,15 @@ import whatsapp from '../../Img/WhatsApp.png'
 import telegram from '../../Img/telegram.png'
 import logo from '../../Img/NEW_LOGO_05_2024.png'
 import Segments from '../Components/Segments'
+import ServiceCard from '../HomePage/Components/ServiceCard';
+import NewFNO from '../Forms/NewFNO';
+
+const btn = [
+    { logo: 1, title: 'Online Бухгалтер', subheader: 'Самостоятельное ведение Бухгалтерии', text1: 'Учет доходов и расходов / Создание Документов / Расчет ФНО', text2: '', btnName: 'Регистрация' },
+    { logo: 2, title: 'Я Бухгалтер', subheader: 'Хочу работать удалённо', text1: 'Новые клиенты / Разовые услуги по сдаче ФНО / Создание Документов / Расчет ФНО', text2: ' Найти клиентов', btnName: 'Подать заявку' },
+    { logo: 3, title: 'Аутсорсинг', subheader: 'Бухгалтерские услуги', text1: 'Бухгалтерское сопровождение предприятия в Казахстане', text2: '', btnName: 'Заказать звонок' },
+    { logo: 4, title: 'Сдать ФНО', subheader: 'Сдача налоговыйх форм', text1: 'ФНО 910.00 / ФНО 913.00 / ФНО 100.00 / ФНО 200.00 / ФНО 300.00 / ФНО 400.00', text2: 'Разовая услуга', btnName: 'Отправить заявку' },
+]
 
 const text_segment_1 = [
     'В FinUp.kz мы понимаем, насколько важна правильная и своевременная работа с документами для успешного ведения бизнеса. Наши услуги включают:',
@@ -85,7 +94,7 @@ const text_segment_4_bold = [
     ''
 ]
 
-const ServicePage = ({ newClientRequest }) => {
+const ServicePage = ({ newAccountantRequest, newClientRequest, newFNORequest }) => {
 
     const openFormNewAccountant = useSelector(state => state.auth.openFormNewAccountant)
     const openFormNewClient = useSelector(state => state.auth.openFormNewClient)
@@ -124,12 +133,13 @@ const ServicePage = ({ newClientRequest }) => {
     }
 
 
-
+    const arrayFun = [goCabinet, () => { setOpenFormNewAccountant(true) }, () => { setOpenFormNewClient(true) }, () => { setOpenFormNewFNO(true) }]
+    
     //const screenHeight = (window.screen.height / 2) + 40
 
     return <>
-        <Container maxWidth="xl" sx={{ mt: { xs: 8, md: 20 } }}>
-            <Grid container spacing={1} sx={{ justifyContent: 'center', borderBottom: 2, borderColor: '#fcbb42', borderBottomStyle: 'inset', pb: { xs: 5, md: 10 } }}>
+        <Container maxWidth="xl" sx={{ mt: { xs: 8, md: 15 } }}>
+            <Grid container spacing={1} sx={{ justifyContent: 'center', pb: { xs: 5, md: 6 } }}>
                 <Grid item md={12} lg={6}  >
                     <Typography variant="h1" fontStyle={'italic'} fontSize={{ xs: '1.5em', md: '2em' }} textAlign={'center'} color={'#5d5d5d'} sx={{ mt: { xs: 0.5, md: 2 } }} >
                         Компания FinUP.kz Аутсорсинг Бухгалтерии!
@@ -167,7 +177,13 @@ const ServicePage = ({ newClientRequest }) => {
                 <Button onClick={() => setOpenFormNewClient(true)} color='secondary' type="button" variant="outlined" sx={{ mb: 1 }} >Запросить консультацию</Button>
             </Grid>
 
-            {/* <Dialog
+            <Grid container spacing={{ xs: 2, md: 2 }} sx={{ px: 3 }} >
+                {btn.map((b, index) =>
+                    <ServiceCard key={index} logo={b.logo} title={b.title} subheader={b.subheader} text1={b.text1} text2={b.text2} btnName={b.btnName} fun={arrayFun[index]} />
+                )}
+            </Grid>
+
+            <Dialog
             open={openFormNewAccountant}
             onClose={handleCloseFormNewAccountant}
             scroll='body'
@@ -178,7 +194,7 @@ const ServicePage = ({ newClientRequest }) => {
             <DialogContent >
                 <NewAccountant newAccountantRequest={newAccountantRequest} handleCloseFormNewAccountant={handleCloseFormNewAccountant} />
             </DialogContent>
-        </Dialog> */}
+        </Dialog>
 
             <Dialog
                 open={openFormNewClient}
@@ -193,7 +209,7 @@ const ServicePage = ({ newClientRequest }) => {
                 </DialogContent>
             </Dialog>
 
-            {/*  <Dialog
+             <Dialog
             open={openFormNewFNO}
             onClose={handleCloseFormNewFNO}
             scroll='body'
@@ -204,7 +220,7 @@ const ServicePage = ({ newClientRequest }) => {
             <DialogContent >
                 <NewFNO newAccountantRequest={newFNORequest} handleCloseFormNewAccountant={handleCloseFormNewFNO} />
             </DialogContent>
-        </Dialog> */}
+        </Dialog>
         </Container>
         <Container maxWidth="xl" sx={{ mt: 6, p: { xs: 'default', md: 0 } }}>
             <Grid container spacing={5} sx={{ justifyContent: 'center', borderBottom: 2, borderColor: '#fcbb42', borderBottomStyle: 'inset', pb: 10 }}>
@@ -272,12 +288,12 @@ const ServicePage = ({ newClientRequest }) => {
                     </Typography>
                 </Grid>
                 <Grid item md={12} lg={12} sx={{ justifyContent: 'center', textAlign: 'center' }}  >
-                    <Box sx={{width: {xs: '350px', md: '560px'}, height: {xs: '200px', md: '315px'}, mx: 'auto'}} >
-                    <iframe style={{ width: '100%', height: '100%' }} src="https://www.youtube.com/embed/eC9zfrsuonI?si=S3lF_7VPtflyLe0j"
-                        title="YouTube FinUP.kz - Бухгалтерские услуги" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe>
-                    </Box>                    
+                    <Box sx={{ width: { xs: '350px', md: '560px' }, height: { xs: '200px', md: '315px' }, mx: 'auto' }} >
+                        <iframe style={{ width: '100%', height: '100%' }} src="https://www.youtube.com/embed/eC9zfrsuonI?si=S3lF_7VPtflyLe0j"
+                            title="YouTube FinUP.kz - Бухгалтерские услуги" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </Box>
                 </Grid>
                 <Grid item md={12} lg={12} sx={{ justifyContent: 'center', textAlign: 'center' }}  >
                     <Stack direction="row" justifyContent="center" alignItems="center" spacing={1}>
@@ -300,28 +316,28 @@ const ServicePage = ({ newClientRequest }) => {
                 </Grid>
                 <Grid item md={12} lg={12} sx={{ justifyContent: 'center', textAlign: 'center' }}  >
                     <Stack justifyContent="center" alignItems="center" spacing={0}>
-                    <Button title='Бухгалтерское обслуживание' target="_blank" href="https://2gis.kz/astana/geo/70000001075602870" underline="none" >  
-                        <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'center'} >
-                        РК г. Астана, улица Родниковая 1/1, Z05F2B1.
-                        БЦ Абат, этаж 4, офис 402
-                        </Typography>
-                    </Button>
-                    <Button title='Телефон Бухгалтерской компании' target="_blank" href="tel:+77172252550" underline="none" >  
-                        <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'center'} >
-                        +7 (717) 225-25-50
-                        </Typography>
-                    </Button>
-                    <Button title='Мобильный телефон Бухгалтерской компании' target="_blank" href="tel:+77084252550" underline="none" >  
-                        <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'center'} >
-                        +7 (708) 425-25-50
-                        </Typography>
-                    </Button>
-                    <Button title='Электронная почта Бухгалтерской компании' target="_blank" href="mailto:buh@finup.kz" underline="none" >  
-                        <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'center'} >
-                        e-mail: buh@finup.kz
-                        </Typography>
-                    </Button>
-                    </Stack>                    
+                        <Button title='Бухгалтерское обслуживание' target="_blank" href="https://2gis.kz/astana/geo/70000001075602870" underline="none" >
+                            <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'center'} >
+                                РК г. Астана, улица Родниковая 1/1, Z05F2B1.
+                                БЦ Абат, этаж 4, офис 402
+                            </Typography>
+                        </Button>
+                        <Button title='Телефон Бухгалтерской компании' target="_blank" href="tel:+77172252550" underline="none" >
+                            <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'center'} >
+                                +7 (717) 225-25-50
+                            </Typography>
+                        </Button>
+                        <Button title='Мобильный телефон Бухгалтерской компании' target="_blank" href="tel:+77084252550" underline="none" >
+                            <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'center'} >
+                                +7 (708) 425-25-50
+                            </Typography>
+                        </Button>
+                        <Button title='Электронная почта Бухгалтерской компании' target="_blank" href="mailto:buh@finup.kz" underline="none" >
+                            <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'center'} >
+                                e-mail: buh@finup.kz
+                            </Typography>
+                        </Button>
+                    </Stack>
                 </Grid>
                 <Grid item md={12} lg={12} sx={{ justifyContent: 'center', textAlign: 'center' }}  >
                     <img src={logo} width={'300px'} alt='Аутсорсинг Бухгалтерии FinUp.kz' />

@@ -43,7 +43,7 @@ function AppBarSite() {
 
     const settings = [
         { title: 'Главная', onClick: () => { navigate('/'); handleCloseExitMenu() }, idMenu: 'none', idBTN: 'home' },
-        { title: 'Аутсорсинг бухгалтерии', onClick: () => { navigate('/uslugi_buhgaltera'); handleCloseExitMenu() }, idMenu: 'none', idBTN: 'buh' },
+        { title: 'ИИ Консультант', onClick: () => { navigate('/uslugi_buhgaltera'); handleCloseExitMenu() }, idMenu: 'none', idBTN: 'buh' },
         { title: 'Онлайн Бухгалтер', onClick: handleClickOnlineBuh, idMenu: "menu-onlineBuh", idBTN: 'OnlineBuh' },
         { title: 'Цены', onClick: () => { window.open('https://finup.kz/buh/price/') }, idMenu: 'none', idBTN: 'price' },
         { title: 'Контакты', onClick: () => { window.open('https://finup.kz/buh/about_us/') }, idMenu: 'none', idBTN: 'contact' },
@@ -56,9 +56,11 @@ function AppBarSite() {
         { title: 'Первые настройки', onClick: () => { navigate('/instrukciy_online_buhgalter'); handleCloseExitMenu(); handleCloseOnlineBuh(); } },
         { title: 'Функции', onClick: () => { navigate('/functions_online_buhgalter'); handleCloseExitMenu(); handleCloseOnlineBuh(); } },
         { title: 'Основные разделы', onClick: () => { navigate('/sections_online_buhgalter'); handleCloseExitMenu(); handleCloseOnlineBuh(); } },
-        { title: 'Подпись и печать', onClick: () => { handleCloseExitMenu(); handleCloseOnlineBuh(); } },
-        { title: 'Частые вопросы', onClick: () => { handleCloseExitMenu(); handleCloseOnlineBuh(); } },
-        { title: 'Поддержка', onClick: () => { handleCloseExitMenu(); handleCloseOnlineBuh(); } }, 
+        { title: 'Форма 910', onClick: () => { navigate('/forma_910'); handleCloseExitMenu(); handleCloseOnlineBuh(); } },
+        { title: 'Форма 913', onClick: () => {  handleCloseExitMenu(); handleCloseOnlineBuh(); } },
+        // { title: 'Подпись и печать', onClick: () => { handleCloseExitMenu(); handleCloseOnlineBuh(); } },
+        // { title: 'Частые вопросы', onClick: () => { handleCloseExitMenu(); handleCloseOnlineBuh(); } },
+        // { title: 'Поддержка', onClick: () => { handleCloseExitMenu(); handleCloseOnlineBuh(); } }, 
     ]
 
     return (

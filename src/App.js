@@ -12,6 +12,7 @@ import OnlineBuhgalteriyaPageContainer from './Site/OnlineBuh/OnlineBuhgalteriya
 import SettingsOnlineBuhgalterPageContainer from './Site/OnlineBuh/SettingsOnlineBuhgalter/SettingsOnlineBuhgalterContainer'
 import FunctionsOnlineBuhgalterPageContainer from './Site/OnlineBuh/FunctionsOnlineBuhgalter/FunctionsOnlineBuhgalterPageContainer';
 import LevelsOnlineBuhgalterPageContainer from './Site/OnlineBuh/LevelOnlineBuhgalter/LevelsOnlineBuhgalterPageContainer';
+import FNO910OnlineBuhgalterPageContainer from './Site/OnlineBuh/FNOOnlineBuhgalter/FNO910OnlineBuhgalterPageContainer';
 
 function App() {
 
@@ -44,12 +45,13 @@ function App() {
 
     <main>
       <Routes>
-        <Route path="/" element={<HomePageContainer />} />
-        <Route path="/uslugi_buhgaltera" element={<ServicePageContainer />} />
+        <Route path="/" element={<ServicePageContainer />} />
+        <Route path="/uslugi_buhgaltera" element={<HomePageContainer />} />
         <Route path="/online_buhgalteriya" element={<OnlineBuhgalteriyaPageContainer />} />
         <Route path="/instrukciy_online_buhgalter" element={<SettingsOnlineBuhgalterPageContainer />} />
         <Route path="/functions_online_buhgalter" element={<FunctionsOnlineBuhgalterPageContainer />} />
         <Route path="/sections_online_buhgalter" element={<LevelsOnlineBuhgalterPageContainer />} />
+        <Route path="/forma_910" element={<FNO910OnlineBuhgalterPageContainer />} />
 
       </Routes>
     </main>
