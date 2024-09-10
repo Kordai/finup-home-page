@@ -8,7 +8,7 @@ import MovingRoundedIcon from '@mui/icons-material/MovingRounded';
 import monitor from '../../../Img/monitor2.jpg';
 import DoneOutlineRoundedIcon from '@mui/icons-material/DoneOutlineRounded';
 
-const ServicesCardPC = ({ }) => {
+const ServicesCardPC = () => {
 
     return (
         <Card sx={{ boxShadow: 0, borderRadius: 1 }}>
@@ -27,7 +27,7 @@ const ServicesCardPC = ({ }) => {
                     title={
                         <Chip icon={<MovingRoundedIcon sx={{ width: { xs: 30, sm: 40 }, height: { xs: 30, sm: 40 } }} color='secondary' />}
                             label={
-                                <Typography variant="h3" sx={{ fontSize: { xs: '1.2rem', sm: '1.7rem' }, fontWeight: { xs: '600', sm: '400' } }} color="text.secondary" textAlign={'center'} >
+                                <Typography variant="h5" sx={{ fontSize: { xs: '1.2rem', sm: '1.7rem' }, fontWeight: { xs: '600', sm: '400' } }} color="text.secondary" textAlign={'center'} >
                                     Аутсорсинг Бухгалтерии
                                 </Typography>
                             }

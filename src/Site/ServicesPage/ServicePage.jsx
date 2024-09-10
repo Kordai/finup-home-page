@@ -15,6 +15,7 @@ import logo from '../../Img/NEW_LOGO_05_2024.png'
 import Segments from '../Components/Segments'
 import ServiceCard from '../HomePage/Components/ServiceCard';
 import NewFNO from '../Forms/NewFNO';
+import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
 
 const btn = [
     { logo: 1, title: 'Online Бухгалтер', subheader: 'Самостоятельное ведение Бухгалтерии', text1: 'Учет доходов и расходов / Создание Документов / Расчет ФНО', text2: '', btnName: 'Регистрация' },
@@ -134,15 +135,42 @@ const ServicePage = ({ newAccountantRequest, newClientRequest, newFNORequest }) 
 
 
     const arrayFun = [goCabinet, () => { setOpenFormNewAccountant(true) }, () => { setOpenFormNewClient(true) }, () => { setOpenFormNewFNO(true) }]
-    
+
     //const screenHeight = (window.screen.height / 2) + 40
 
     return <>
         <Container maxWidth="xl" sx={{ mt: { xs: 8, md: 15 } }}>
             <Grid container spacing={1} sx={{ justifyContent: 'center', pb: { xs: 5, md: 6 } }}>
                 <Grid item md={12} lg={6}  >
-                    <Typography variant="h1" fontStyle={'italic'} fontSize={{ xs: '1.5em', md: '2em' }} textAlign={'center'} color={'#5d5d5d'} sx={{ mt: { xs: 0.5, md: 2 } }} >
-                        Компания FinUP.kz Аутсорсинг Бухгалтерии!
+                    <Typography variant="h1" fontStyle={'italic'} fontSize={{ xs: '1.1em', md: '1.3em' }} textAlign={'center'} color={'#000'} sx={{ mt: { xs: 0.5, md: 2 } }} >
+                        Аутсорсинг Бухгалтерии с FinUP.kz: Профессиональный Подход к Финансам Вашего Бизнеса
+                    </Typography>
+                    <Typography color={'#5d5d5d'} variant="body1" fontSize={{ xs: '0.7em', md: '1em' }} gutterBottom sx={{ textIndent: '5%', px: { xs: 2, md: 0 }, mt: 1 }} >
+                        Бухгалтерский учет является одним из ключевых аспектов успешного функционирования любого предприятия. Компания FinUP.kz предлагает профессиональный аутсорсинг бухгалтерии, освобождая вас от необходимости заниматься сложными финансовыми вопросами.
+                    </Typography>
+                    <Typography variant="h2" fontStyle={'italic'} fontSize={{ xs: '1em', md: '1.1em' }} textAlign={'left'} color={'#000'} sx={{ mt: { xs: 0.5, md: 2 } }} >
+                    Почему выбирают аутсорсинг бухгалтерии?
+                    </Typography>
+                    <Typography color={'#5d5d5d'} variant="body1" fontSize={{ xs: '0.7em', md: '1em' }} gutterBottom sx={{ textIndent: '5%', px: { xs: 2, md: 0 }, mt: 1 }} >
+                    Компании выбирают аутсорсинг бухгалтерии, чтобы сосредоточиться на бизнесе и снизить затраты. Мы предоставляем экспертные консультации и гарантируем актуальность вашей финансовой отчетности. 
+                    Надежный документооборот и своевременная передача документов минимизируют риски.
+                    </Typography>
+                    
+                    <Typography variant="h2" fontStyle={'italic'} fontSize={{ xs: '1em', md: '1.1em' }} textAlign={'left'} color={'#000'} sx={{ mt: { xs: 0.5, md: 2 } }} >
+                    Преимущества сотрудничества с FinUP.kz
+                    </Typography>
+                    <Typography color={'#5d5d5d'} variant="body1" fontSize={{ xs: '0.7em', md: '1em' }} gutterBottom sx={{ textIndent: '5%', px: { xs: 2, md: 0 }, mt: 1 }} >
+                    Мы обеспечиваем надежные бухгалтерские услуги, соответствующие законодательным требованиям. Наш индивидуальный подход помогает находить оптимальные решения для каждого бизнеса. 
+                    С нами вы получите профессиональную поддержку и минимизацию рисков.
+                    </Typography>                    
+                    <Typography variant="h2" fontStyle={'italic'} fontSize={{ xs: '1em', md: '1.1em' }} textAlign={'left'} color={'#000'} sx={{ mt: { xs: 0.5, md: 2 } }} >
+                        Как связаться с нами
+                    </Typography>
+                    <Typography color={'#5d5d5d'} variant="body1" fontSize={{ xs: '0.7em', md: '1em' }} gutterBottom sx={{ textIndent: '5%', px: { xs: 2, md: 0 }, mt: 1 }} >
+                        Если вы хотите узнать больше о наших услугах и помочь вашему бизнесу добиться успеха, свяжитесь с нами сегодня. Специалисты FinUP.kz всегда готовы ответить на ваши вопросы и предложить наиболее эффективные решения для вашего бизнеса.
+                    </Typography>
+                    {/* <Typography variant="h1" fontStyle={'italic'} fontSize={{ xs: '1.5em', md: '2em' }} textAlign={'center'} color={'#5d5d5d'} sx={{ mt: { xs: 0.5, md: 2 } }} >
+                        Аутсорсинг бухгалтерии - компания FinUP.kz!
                     </Typography>
                     <Typography color={'#5d5d5d'} variant="body1" fontSize={{ xs: '0.8em', md: '1.1em' }} gutterBottom sx={{ textIndent: '5%', px: { xs: 2, md: 0 }, mt: 1 }} >
                         FinUP.kz специализируется на предоставлении профессиональных бухгалтерских услуг.
@@ -169,7 +197,7 @@ const ServicePage = ({ newAccountantRequest, newClientRequest, newFNORequest }) 
                         Воспользовавшись услугами Бухгалтера, вы сможете сосредоточиться на своих задачах, зная, что финансы вашей компании находятся в надежных руках.
 
                         Свяжитесь с нами сегодня, чтобы узнать, как мы можем помочь вашему бизнесу!
-                    </Typography>
+                    </Typography> */}
                 </Grid>
                 <Grid item md={12} lg={6}  >
                     <img alt='Online Бухгалтер' src={topImg} style={{ width: '100%', border: 5 }} />
@@ -184,17 +212,17 @@ const ServicePage = ({ newAccountantRequest, newClientRequest, newFNORequest }) 
             </Grid>
 
             <Dialog
-            open={openFormNewAccountant}
-            onClose={handleCloseFormNewAccountant}
-            scroll='body'
-        >
-            <DialogTitle sx={{ m: 0, p: '5px', textAlign: 'center' }} color="#07139e" id="customized-dialog-title">
-                Заявка на удаленного Бухгалтера
-            </DialogTitle>
-            <DialogContent >
-                <NewAccountant newAccountantRequest={newAccountantRequest} handleCloseFormNewAccountant={handleCloseFormNewAccountant} />
-            </DialogContent>
-        </Dialog>
+                open={openFormNewAccountant}
+                onClose={handleCloseFormNewAccountant}
+                scroll='body'
+            >
+                <DialogTitle sx={{ m: 0, p: '5px', textAlign: 'center' }} color="#07139e" id="customized-dialog-title">
+                    Заявка на удаленного Бухгалтера
+                </DialogTitle>
+                <DialogContent >
+                    <NewAccountant newAccountantRequest={newAccountantRequest} handleCloseFormNewAccountant={handleCloseFormNewAccountant} />
+                </DialogContent>
+            </Dialog>
 
             <Dialog
                 open={openFormNewClient}
@@ -209,18 +237,18 @@ const ServicePage = ({ newAccountantRequest, newClientRequest, newFNORequest }) 
                 </DialogContent>
             </Dialog>
 
-             <Dialog
-            open={openFormNewFNO}
-            onClose={handleCloseFormNewFNO}
-            scroll='body'
-        >
-            <DialogTitle sx={{ m: 0, p: '5px', textAlign: 'center' }} color="#07139e" id="customized-dialog-title">
-                Заказать звонок
-            </DialogTitle>
-            <DialogContent >
-                <NewFNO newAccountantRequest={newFNORequest} handleCloseFormNewAccountant={handleCloseFormNewFNO} />
-            </DialogContent>
-        </Dialog>
+            <Dialog
+                open={openFormNewFNO}
+                onClose={handleCloseFormNewFNO}
+                scroll='body'
+            >
+                <DialogTitle sx={{ m: 0, p: '5px', textAlign: 'center' }} color="#07139e" id="customized-dialog-title">
+                    Заказать звонок
+                </DialogTitle>
+                <DialogContent >
+                    <NewFNO newAccountantRequest={newFNORequest} handleCloseFormNewAccountant={handleCloseFormNewFNO} />
+                </DialogContent>
+            </Dialog>
         </Container>
         <Container maxWidth="xl" sx={{ mt: 6, p: { xs: 'default', md: 0 } }}>
             <Grid container spacing={5} sx={{ justifyContent: 'center', borderBottom: 2, borderColor: '#fcbb42', borderBottomStyle: 'inset', pb: 10 }}>
@@ -318,8 +346,8 @@ const ServicePage = ({ newAccountantRequest, newClientRequest, newFNORequest }) 
                     <Stack justifyContent="center" alignItems="center" spacing={0}>
                         <Button title='Бухгалтерское обслуживание' target="_blank" href="https://2gis.kz/astana/geo/70000001075602870" underline="none" >
                             <Typography variant="subtitle1" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }} color="text.secondary" textAlign={'center'} >
-                                РК г. Астана, улица Родниковая 1/1, Z05F2B1.
-                                БЦ Абат, этаж 4, офис 402
+                                РК г. Астана, проспект Кабанбай Батыра 17.
+                                БЦ Международный Бизнес Центр, этаж 7, офис 705
                             </Typography>
                         </Button>
                         <Button title='Телефон Бухгалтерской компании' target="_blank" href="tel:+77172252550" underline="none" >

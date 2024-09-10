@@ -2,14 +2,13 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import {  Button, CardMedia, Chip,  Stack } from '@mui/material';
 import AodRoundedIcon from '@mui/icons-material/AodRounded';
 import mobile from '../../../Img/mobile2.jpg';
 import AppShortcutRoundedIcon from '@mui/icons-material/AppShortcutRounded';
 
-const ServicesCardMobile = ({ }) => {
+const ServicesCardMobile = () => {
 
     return (
         <Card sx={{ boxShadow: 0, borderRadius: 1 }}>
@@ -33,7 +32,7 @@ const ServicesCardMobile = ({ }) => {
                     title={
                         <Chip icon={<AodRoundedIcon sx={{ width: { xs: 30, sm: 40 }, height: { xs: 30, sm: 40 } }} color='secondary' />}
                         label={
-                            <Typography variant="h3" sx={{ fontSize: { xs: '1.2rem', sm: '1.7rem' }, fontWeight: { xs: '600', sm: '400' } }} color="text.secondary" textAlign={'left'} >
+                            <Typography variant="h5" sx={{ fontSize: { xs: '1.2rem', sm: '1.7rem' }, fontWeight: { xs: '600', sm: '400' } }} color="text.secondary" textAlign={'left'} >
                         Online(Онлайн) Бухгалтер
                     </Typography>
                         }

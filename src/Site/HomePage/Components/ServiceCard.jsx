@@ -67,10 +67,10 @@ const ServiceCard = ({ logo, title, subheader, text1, text2, btnName, fun }) => 
                               <InfoOutlinedIcon />
                             </IconButton>
                           }
-                        title={<Typography variant="h2" sx={{ fontSize: { xs: '0.8rem', sm: '2rem' }, fontWeight: { xs: '600', sm: '400' } }} color="text.secondary" textAlign={'left'} >
+                        title={<Typography variant="h5" sx={{ fontSize: { xs: '0.8rem', sm: '1.8rem' }, fontWeight: { xs: '600', sm: '400' } }} color="text.secondary" textAlign={'left'} >
                             {title}
                         </Typography>}
-                        subheader={<Typography variant="h3" sx={{ fontSize: { xs: '0.7rem', sm: '0.8rem' }, display: { xs: 'none', sm: 'block' } }} color="text.secondary" textAlign={'left'} >
+                        subheader={<Typography variant="h6" sx={{ fontSize: { xs: '0.7rem', sm: '0.8rem' }, display: { xs: 'none', sm: 'block' } }} color="text.secondary" textAlign={'left'} >
                             {subheader}
                         </Typography>}
                     />
@@ -83,7 +83,7 @@ const ServiceCard = ({ logo, title, subheader, text1, text2, btnName, fun }) => 
                             {subheader + ' ' + text2}
                         </Typography>
 
-                        <Typography color="text.secondary" sx={{color: '#07139e', mt: 1, fontSize: { xs: '14px', sm: '18px' }}} variant="h5" textAlign='center' >
+                        <Typography color="text.secondary" sx={{color: '#07139e', mt: 1, fontSize: { xs: '14px', sm: '18px' }}} variant="h6" textAlign='center' >
                             {btnName}
                         </Typography>
 
